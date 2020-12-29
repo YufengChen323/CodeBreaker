@@ -1,0 +1,70 @@
+<html>
+<head>
+<script>
+    let answer = []
+    function startGame() {
+        answer = [Math.floor (Math.random() * 10),
+         Math.floor (Math.random() * 10),
+         Math.floor (Math.random() * 10),
+         Math.floor (Math.random() * 10),
+        ]
+        const alert = document.createElement("alert")
+        document.getElementById("body").appendChild(alert)
+        console.log(answer)
+    }
+    function enterAnswer() {
+        let a1 = document.getElementById("a1").value
+        let b1 = document.getElementById("b1").value
+        let c1 = document.getElementById("c1").value
+        let d1 = document.getElementById("d1").value
+        const guess = [a1, b1, c1, d1]
+        const result = check(answer, guess)
+        
+        const div = document.createElement("div")
+        div.innerHTML = a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' ' + result  
+        document.getElementById("body").appendChild(div)
+        
+    }
+    function check(answer, guess) {
+        var n1 = 0
+        var n2 = 0
+        const ans = [...answer]
+        for (let i = 0; i < guess.length; i++) {
+            const e = guess[i];
+            if (e == ans[i]) {
+                delete ans[i]
+                n1++
+                continue
+            }
+            for (let j = 0; j < ans.length; j++) {
+                const f = ans[j];
+                if (f == e) {
+                    delete ans[j]
+                    n2++
+                    break
+                }
+            }
+        }
+        return [n1, n2]
+    }
+
+</script>
+</head>
+<body id='body'>
+<h1>
+    Code Breaker (first JavaScript project)
+</h1>
+<button onClick="startGame()">
+    Generate Code
+</button>
+<br />
+<br />
+<input id='a1' size='1'/>
+<input id='b1' size='1'/>
+<input id='c1' size='1'/>
+<input id='d1' size='1'/>
+<button onClick="enterAnswer()">
+    Check Code
+</button>
+</body>
+</html>
