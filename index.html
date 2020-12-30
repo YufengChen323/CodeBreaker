@@ -6,8 +6,7 @@
         answer = [Math.floor (Math.random() * 10),
          Math.floor (Math.random() * 10),
          Math.floor (Math.random() * 10),
-         Math.floor (Math.random() * 10),
-        ]
+         Math.floor (Math.random() * 10)]
         const alert = document.createElement("alert")
         document.getElementById("body").appendChild(alert)
         console.log(answer)
@@ -29,6 +28,16 @@
         var n1 = 0
         var n2 = 0
         const ans = [...answer]
+        for (let a = 0; a < guess.length; a++) {
+            const b = guess[a];
+            if (b == ans[a]) {
+                delete ans[a]
+                n1++
+                continue
+            }
+
+            
+        }
         for (let i = 0; i < guess.length; i++) {
             const e = guess[i];
             if (e == ans[i]) {
@@ -54,6 +63,9 @@
 <h1>
     Code Breaker (first JavaScript project)
 </h1>
+<p1>
+
+</p1>
 <button onClick="startGame()">
     Generate Code
 </button>
@@ -68,3 +80,16 @@
 </button>
 </body>
 </html>
+<!--
+<table style="width:100%">
+    <tr>
+        <th>Your Code</th>
+        <th>Amt of Correct Numbers</th>
+        <th>Amt of Correct Numbers, Incorrect Position</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+-->
