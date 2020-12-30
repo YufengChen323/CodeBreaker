@@ -20,7 +20,7 @@
         const result = check(answer, guess)
         
         const div = document.createElement("div")
-        div.innerHTML = a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' ' + result  
+        div.innerHTML = a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' '  + result  
         document.getElementById("body").appendChild(div)
         
     }
@@ -61,22 +61,13 @@
 </head>
 <body id='body'>
 <h1>
-    Code Breaker (first JavaScript project)
+    Code Breaker (first JavaScript project) 
 </h1>
-<p1>
-    By clicking on Generate Code below, the computer will generate a four number code. You have to guess the code by entering the numbers (one in each box)
-    and clicking on Check Code. It will then print your code, and then two more numbers which indicate the correct numbers in your code. The first number
-    is how many numbers you have that are correct, and in the correct position as well. The second number is for the amount of numbers in your code that are 
-    correct, but in the wrong place. The computer will print out these numbers not according to how they are placed in your code (It is random order). Keep in mind
-    that this is a work in progress, and the auto-correct may be wrong (But probably not). If you find this too hard, then open Inspector (ctrl + shift + i), go to Console, 
-    and type in 'answer' (without quotes). The answer to the code will be printed in the console.
-<br />
-    THIS IS A WORK IN PROGRESS
-</p1>
+<a href='help.html'>Help</a>
 <br />
 <br />
 <button onClick="startGame()">
-    Generate Code
+    Start Game
 </button>
 <br />
 <br />
