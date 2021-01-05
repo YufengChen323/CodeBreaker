@@ -1,6 +1,11 @@
 <html>
 <head>
+    <style>
+        td, th { border: 1px solid }
+    </style>
 <script>
+    //4435
+    //6435
     let answer = []
     function startGame() {
         answer = [Math.floor (Math.random() * 10),
@@ -19,35 +24,28 @@
         const guess = [a1, b1, c1, d1]
         const result = check(answer, guess)
         
-        const div = document.createElement("div")
-        div.innerHTML = a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' '  + result  
-        document.getElementById("body").appendChild(div)
+        const tr = document.createElement("tr")
+        tr.innerHTML = `<td>${a1}</td><td>${b1}</td><td>${c1}</td><td>${d1}</td><td>${result[0]}</td><td>${result[1]}</td>`
+        document.getElementById("table").appendChild(tr)
         
     }
     function check(answer, guess) {
         var n1 = 0
         var n2 = 0
         const ans = [...answer]
-        for (let a = 0; a < guess.length; a++) {
-            const b = guess[a];
-            if (b == ans[a]) {
-                delete ans[a]
+        for (let i = 0; i < guess.length; i++) {
+           if (guess[i] == ans[i]) {
+                delete ans[i]
+                delete guess[i]
                 n1++
                 continue
-            }
-
-            
+            } 
         }
         for (let i = 0; i < guess.length; i++) {
-            const e = guess[i];
-            if (e == ans[i]) {
-                delete ans[i]
-                n1++
+            if (guess[i] === undefined)
                 continue
-            }
             for (let j = 0; j < ans.length; j++) {
-                const f = ans[j];
-                if (f == e) {
+                if (ans[j] == guess[i]) {
                     delete ans[j]
                     n2++
                     break
@@ -71,25 +69,26 @@
 </button>
 <br />
 <br />
-<input id='a1' size='1'/>
-<input id='b1' size='1'/>
-<input id='c1' size='1'/>
-<input id='d1' size='1'/>
-<button onClick="enterAnswer()">
-    Check Code
-</button>
-</body>
-</html>
-<!--
-<table style="width:100%">
+<table style="width:300px" id='table'>
     <tr>
-        <th>Your Code</th>
-        <th>Amt of Correct Numbers</th>
-        <th>Amt of Correct Numbers, Incorrect Position</th>
+        <th>#1</th>
+        <th>#2</th>
+        <th>#3</th>
+        <th>#4</th>
+        <th>H1</th>
+        <th>H2</th>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
+        <td><input id='a1' size='1'/></td>
+        <td><input id='b1' size='1'/></td>
+        <td><input id='c1' size='1'/></td>
+        <td><input id='d1' size='1'/></td>
+        <td colspan="2"><button onClick="enterAnswer()">
+            Check Code
+        </button></td>
     </tr>
 </table>
--->
+
+</body>
+</html>
+
